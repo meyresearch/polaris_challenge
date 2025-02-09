@@ -1,6 +1,7 @@
 # Project stuff
 .ipynb_checkpoints/
-
+*.png
+*.csv
 
 
 # Byte-compiled / optimized / DLL files

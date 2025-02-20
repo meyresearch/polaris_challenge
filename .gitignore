@@ -2,7 +2,11 @@
 .ipynb_checkpoints/
 *.png
 *.csv
-
+admet/data
+admet/raw_data_package
+*.png
+*.db
+.DS_Store
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -8,7 +8,7 @@ seed <- 1234
 
 
 
-df <- read.csv('admet/imputed/train_admet_all_transformed.csv')
+df <- read.csv('admet/imputed/val_admet_all_transformed.csv')
 print(str(df))
 allVars <- c('CXSMILES', 'Molecule.Name',
             'LogMLM', 'LogHLM', 'LogKSOL', 'LogD', 'LogMDR1.MDCKII')
@@ -38,5 +38,5 @@ imp <- mice(data = df[allVars],
 
 imp_df <- complete(imp, 'long', include=TRUE)
 
-write_csv(imp_df, 'admet/imputed/train_admet_log_pmm.csv')
+write_csv(imp_df, 'admet/imputed/val_admet_log_pmm.csv')
 

@@ -2,6 +2,7 @@ require(mice)
 require(lattice)
 require(ggmice)
 library(ggplot2)
+library(readr)
 
 seed <- 1234
 
@@ -13,7 +14,7 @@ allVars <- c('CXSMILES', 'Molecule.Name',
             'LogMLM', 'LogHLM', 'LogKSOL', 'LogD', 'LogMDR1.MDCKII')
 
 numDataSets <- 100
-nIterations <- 50
+nIterations <- 20
 
 # This specifies what columns should be used to predict what.  By default, the 'CXSMILES', and 'Molecule.Name' 
 # columns will be used.  
@@ -35,7 +36,7 @@ imp <- mice(data = df[allVars],
             maxit = nIterations, 
             seed = seed)
 
-imp_df <- complete(imp, 'long')
+imp_df <- complete(imp, 'long', include=TRUE)
 
-write.csv(imp_df, 'admet/imputed/train_admet_log_imputed.csv', row.names=FALSE, quote=FALSE)
+write_csv(imp_df, 'admet/imputed/train_admet_log_pmm.csv')
 

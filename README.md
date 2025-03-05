@@ -10,7 +10,7 @@ This repository contains advanced machine learning approaches for predicting ant
 ## 📋 Table of Contents
 
 - [Project Overview](#-project-overview)
-- [About the dataset](#-about-the=dataset)
+- [About Dataset](#-about-dataset)
 - [Approaches](#-approaches)
   - [Approach 1: Base GP Model](#approach-1-base-gp-model)
   - [Approach 2: Transfer Learning](#approach-2-transfer-learning)
@@ -38,7 +38,7 @@ All approaches predict potency for two coronavirus targets:
 - SARS-CoV-2 main protease (Mpro)
 - MERS-CoV main protease (Mpro)
 
-## 💾 About the dataset
+## 💾 About Dataset
 ![image](https://github.com/user-attachments/assets/8f1da34c-9840-496a-96d6-b239f2d7b283)
 
 The graph shows a bimodal (two-peaked) distribution, which means compounds fall into roughly two similarity groups:

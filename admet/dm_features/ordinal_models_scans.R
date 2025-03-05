@@ -12,7 +12,7 @@ predictors <- c('clogp', 'fsp3', 'mw', 'n_aliphatic_carbocycles', 'n_aliphatic_h
 
 
 targets <- c("LogHLM", "LogMLM", "LogKSOL", "LogMDR1.MDCKII", "LogD")
-alphas <- 
+
 
 results <- data.frame(target = character(), 
                       alpha = double(), 
@@ -46,7 +46,7 @@ alphas_by_target <- list(
   'LogD' = seq(40, 80, length.out=10), 
   'LogMDR1.MDCKII' = seq(125, 150, length.out=10)
 )
-targets <- c('LogD')
+targets <- c('LogHLM')
 
 for (i in seq(1, length(targets))){
   
@@ -58,8 +58,8 @@ for (i in seq(1, length(targets))){
     for (alpha in alphas){
         tryCatch(
           {
-            print(alpha)
             mae <- avg.predict(imp_list, form, alpha, predictors, target, val) 
+            print(c(mae, alpha))
             results[nrow(results)+1, ] <- c(target, alpha, mae)
           }, 
           error = function(cond){
@@ -69,5 +69,5 @@ for (i in seq(1, length(targets))){
         )
     }
 }
-write.csv(results, 'polaris_challenge/admet/dm_features/single_task_logistic_ordinal_scan_6 .csv', row.names=FALSE)
+# write.csv(results, 'polaris_challenge/admet/dm_features/single_task_logistic_ordinal_scan_6 .csv', row.names=FALSE)
 

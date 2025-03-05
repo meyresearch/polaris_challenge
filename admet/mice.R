@@ -39,4 +39,5 @@ imp <- mice(data = df[allVars],
 imp_df <- complete(imp, 'long', include=TRUE)
 
 write_csv(imp_df, 'admet/imputed/val_admet_log_pmm.csv')
+saveRDS(imp, 'admet/imputed/val_admet_log_pmm.RDS')
 

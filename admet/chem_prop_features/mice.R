@@ -7,13 +7,92 @@ library(readr)
 seed <- 1234
 
 
+allVars <- c("split", "Molecule.Name", "CXSMILES", 
+'LogD',
+ 'LogMLM',
+ 'LogHLM',
+ 'LogKSOL',
+ 'LogMDR1.MDCKII',
+'BCUT2D_LOGPLOW',
+ 'BCUT2D_MRHI',
+ 'BCUT2D_MRLOW',
+ 'BCUT2D_MWHI',
+ 'HallKierAlpha',
+ 'Lipophilicity_AstraZeneca',
+ 'MaxAbsPartialCharge',
+ 'MaxPartialCharge',
+ 'MinAbsPartialCharge',
+ 'MinPartialCharge',
+ 'NumAliphaticHeterocycles',
+ 'NumAliphaticRings',
+ 'NumAmideBonds',
+ 'NumHDonors',
+ 'NumHeterocycles',
+ 'PAMPA_NCATS',
+ 'PEOE_VSA1',
+ 'PEOE_VSA10',
+ 'PEOE_VSA11',
+ 'SMR_VSA10',
+ 'SMR_VSA5',
+ 'SMR_VSA6',
+ 'SMR_VSA7',
+ 'SPS',
+ 'SlogP_VSA10',
+ 'SlogP_VSA3',
+ 'SlogP_VSA6',
+ 'VSA_EState1',
+ 'VSA_EState3',
+ 'VSA_EState9',
+ 'fr_C_O',
+ 'fr_C_O_noCOO',
+ 'fr_amide',
+ 'fr_aniline',
+ 'qed') 
 
-df <- read.csv('admet/imputed/train_admet_all_admetai.csv')
+df <- read.csv("admet/chem_prop_features/train_admet_features_1.csv")
 
-df <- df[, df$slit == 'train']
+df <- df[df$split == "train", allVars]
 
-allVars <- c('CXSMILES', 'Molecule.Name',
-            'LogMLM', 'LogHLM', 'LogKSOL', 'LogD', 'LogMDR1.MDCKII')
+
+
+imputerVars <- c('LogMLM', 'LogHLM', 'LogKSOL', 'LogD', 'LogMDR1.MDCKII')
+nonImputeVars <- c(
+"split", "Molecule.Name", "CXSMILES",
+'BCUT2D_LOGPLOW',
+ 'BCUT2D_MRHI',
+ 'BCUT2D_MRLOW',
+ 'BCUT2D_MWHI',
+ 'HallKierAlpha',
+ 'Lipophilicity_AstraZeneca',
+ 'MaxAbsPartialCharge',
+ 'MaxPartialCharge',
+ 'MinAbsPartialCharge',
+ 'MinPartialCharge',
+ 'NumAliphaticHeterocycles',
+ 'NumAliphaticRings',
+ 'NumAmideBonds',
+ 'NumHDonors',
+ 'NumHeterocycles',
+ 'PAMPA_NCATS',
+ 'PEOE_VSA1',
+ 'PEOE_VSA10',
+ 'PEOE_VSA11',
+ 'SMR_VSA10',
+ 'SMR_VSA5',
+ 'SMR_VSA6',
+ 'SMR_VSA7',
+ 'SPS',
+ 'SlogP_VSA10',
+ 'SlogP_VSA3',
+ 'SlogP_VSA6',
+ 'VSA_EState1',
+ 'VSA_EState3',
+ 'VSA_EState9',
+ 'fr_C_O',
+ 'fr_C_O_noCOO',
+ 'fr_amide',
+ 'fr_aniline',
+ 'qed')
 
 numDataSets <- 100
 nIterations <- 20
@@ -23,23 +102,24 @@ nIterations <- 20
 predictorMatrix <- matrix(0, ncol = length(allVars), nrow = length(allVars))
 rownames(predictorMatrix) <- allVars
 colnames(predictorMatrix) <- allVars
-imputerVars <- c('LogMLM', 'LogHLM', 'LogKSOL', 'LogD', 'LogMDR1.MDCKII')
+
+
 predictorMatrix[, imputerVars] <- 1
 diag(predictorMatrix) <- 0
-predictorMatrix[c('CXSMILES', 'Molecule.Name'), ] <- 0
+
+predictorMatrix[nonImputeVars, ] <- 0
 
 
 # Using PMM throghout
-imp <- mice(data = df[allVars],
+imp <- mice(data = df[,allVars],
             m = numDataSets,
-            method = c("", "", "pmm", "pmm", "pmm", "pmm", "pmm"),
             predictorMatrix = predictorMatrix,
-            visitSequence = 'monotone', 
-            maxit = nIterations, 
+            visitSequence = "monotone",
+            maxit = nIterations,
             seed = seed)
 
-imp_df <- complete(imp, 'long', include=TRUE)
+imp_df <- complete(imp, "long", include=TRUE)
 
-write_csv(imp_df, 'admet/imputed/val_admet_log_pmm.csv')
-saveRDS(imp, 'admet/imputed/val_admet_log_pmm.RDS')
+write_csv(imp_df, "admet/chem_prop_features/train_admet_log_pmm_imputed.csv")
+saveRDS(imp, "admet/chem_prop_features/train_admet_log_pmm_imputed.RDS")
 

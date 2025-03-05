@@ -10,6 +10,7 @@ This repository contains advanced machine learning approaches for predicting ant
 ## 📋 Table of Contents
 
 - [Project Overview](#-project-overview)
+- [About the dataset](#-about-the=dataset)
 - [Approaches](#-approaches)
   - [Approach 1: Base GP Model](#approach-1-base-gp-model)
   - [Approach 2: Transfer Learning](#approach-2-transfer-learning)

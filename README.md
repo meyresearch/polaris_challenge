@@ -88,6 +88,7 @@ A straightforward Gaussian Process Regression model that directly maps molecular
 - Works well with limited training data
 
 **Result:**
+
 ![image](https://github.com/user-attachments/assets/50acd79d-96a5-4f61-af0d-00950ff32f79)
 
 Loss: 1.110
@@ -115,6 +116,7 @@ A three-step transfer learning approach:
 - More accurate predictions with uncertainty estimates
 
 **Result:**
+
 ![image](https://github.com/user-attachments/assets/94e3d4fc-4abc-4769-bd49-0d27e4c2ba37)
 
 SARS-CoV-2 model: Loss: 1.233 
@@ -139,6 +141,8 @@ An iterative approach that selects the most informative molecules for training:
 - Adaptable selection strategies
 
 **Result:**
+
+
 ![image](https://github.com/user-attachments/assets/cbb007f8-3769-4dd9-8e07-bafbb571a149)
 
  SARS-CoV-2 model: Loss: 1.0518 

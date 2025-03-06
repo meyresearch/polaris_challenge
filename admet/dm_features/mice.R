@@ -12,7 +12,7 @@ nonImputeVars <- c('split', 'Molecule.Name', 'clogp', 'fsp3', 'mw', 'n_aliphatic
 
 
 
-df <- read.csv("polaris_challenge/admet/dm_features/train_admet_features.csv")
+df <- read.csv("polaris_challenge/admet/dm_features/train_admet_split2_features.csv")
 df <- df[df$split == "train", allVars]
 
 numDataSets <- 100
@@ -41,6 +41,6 @@ imp <- mice(data = df[,allVars],
 
 imp_df <- complete(imp, "long", include=TRUE)
 
-write_csv(imp_df, "polaris_challenge/admet/dm_features/train_admet_log_pmm_imputed.csv")
-saveRDS(imp, "polaris_challenge/admet/dm_features/train_admet_log_pmm_imputed.RDS")
+write_csv(imp_df, "polaris_challenge/admet/dm_features/train_admet_split2_log_pmm_imputed.csv")
+saveRDS(imp, "polaris_challenge/admet/dm_features/train_admet_split2_log_pmm_imputed.RDS")
 

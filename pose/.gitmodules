@@ -1,0 +1,3 @@
+[submodule "MolReBond"]
+	path = MolReBond
+	url = https://github.com/AuroVarat/MolReBond.git

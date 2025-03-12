@@ -1,0 +1,12 @@
+3B/
+archive/
+**/*.yaml
+**/*.csv
+
+reference_complex/*
+**/*.pse
+
+test_ligand_outputs/*
+test_split_output_for_minimization/*
+test_*/
+boltz_*/

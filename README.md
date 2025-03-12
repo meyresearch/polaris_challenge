@@ -5,7 +5,7 @@ This repository contains the code and data used for the ASAP-Polaris Challenge b
    **env.yml** - minimal environment for downloading dependencies for the Challenge.
 
 ## Pose
-by @AuroVarat
+by [@AuroVarat](https://github.com/AuroVarat)
 
 The Pose Prediction is using Boltz-1. Please refer to the [offical Boltz-1 repository](https://github.com/jwohlwend/boltz) for more information on how to install. 
   

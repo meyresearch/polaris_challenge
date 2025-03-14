@@ -1,3 +1,3 @@
-[submodule "pose"]
-	path = pose
+[submodule "pose-by-auro"]
+	path = pose-by-auro
 	url = https://github.com/meyresearch/BoltzForPolaris.git

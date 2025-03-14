@@ -7,7 +7,8 @@ admet/raw_data_package
 *.png
 *.db
 .DS_Store
-
+*.npy
+archive_e19be73
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

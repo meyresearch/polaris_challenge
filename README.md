@@ -1,5 +1,5 @@
-# Offical Repository of Meyresearch for the ASAP-Polaris Challenge 
-This repository contains the code and data used for the ASAP-Polaris Challenge by Meyresearch.
+# Repository of the ASAP-Polaris Challenge with efforts from the Mey Research group and Open Free Energy
+This repository contains the code and data used for the ASAP-Polaris Challenge by Mey research and OpenFE members.
 
 
    **env.yml** - minimal environment for downloading dependencies for the Challenge.

@@ -26,7 +26,11 @@ def plot_heatmap(df, n_clusters, ax):
     
     return sns.heatmap(to_plot, cmap=sns.color_palette('colorblind', n_clusters+1),  square=False, cbar=True, ax=ax)
 
-
+def transform_targets(df): 
+    epsilon = 1e-8
+    for col in ['MLM', 'HLM', 'KSOL', 'MDR1-MDCKII']: 
+        df.loc[:, f"Log{col}"] = np.log10(np.clip(df[col], a_min=epsilon, a_max=None))
+    return df
 
 
 
